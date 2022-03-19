@@ -24,7 +24,7 @@ public class PlayerShooter : MonoBehaviour
 
     public void OnShoot()
     {
-        Debug.Log("Shoot!");
+        Debug.Log("Class PlayerShooter - Shoot!");
     }
 
     public void OnMove()

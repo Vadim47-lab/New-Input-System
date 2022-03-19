@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.InputSystem.Interactions;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,13 @@ public class Player : MonoBehaviour
         _input.Player.Throw.performed += ctx => Throw();
         _input.Player.Drop.performed += ctx => Throw(true);
         _input.Player.PickUp.performed += ctx => TryPickUp();
+        _input.Player.Click.performed += ctx =>
+        {
+            if (ctx.interaction is MultiTapInteraction)
+            {
+                Shoot();
+            }
+        };
     }
 
     private void Update()
@@ -83,5 +91,10 @@ public class Player : MonoBehaviour
         {
             rigidbody.AddForce(transform.forward * _throwForce, ForceMode.Impulse);
         }
+    }
+
+    private void Shoot()
+    {
+        Debug.Log("Class Player - Shoot!");
     }
 }
